@@ -13,8 +13,9 @@ namespace StringCalculator
         {
             if (string.IsNullOrWhiteSpace(numbers))
                 return 0;
-            else
-                return 1;
+
+            int num = Int32.Parse(numbers);
+            return num;
         }
     }
 }
