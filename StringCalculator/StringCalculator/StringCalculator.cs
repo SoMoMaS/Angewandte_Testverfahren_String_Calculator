@@ -14,16 +14,28 @@ namespace StringCalculator
             if (string.IsNullOrWhiteSpace(numbers))
                 return 0;
 
-            List<char> delimiters = new List<char>() { '\n', ',' };
+            List<string> delimiters = new List<string>() { "\n", "," };
 
-            // Case custom
+            // Case custom single delimiter
             bool isCustom = numbers.Contains("//");
-            if (isCustom)
+            if (isCustom && !numbers.Contains('[') && !numbers.Contains(']'))
             {
                 var lines = numbers.Split('\n');
                 int lastIndex = lines[0].LastIndexOf("/");
-                delimiters.Add(lines[0][lastIndex + 1]);
+                delimiters.Add(lines[0][lastIndex + 1].ToString());
                 numbers = numbers.Remove(0, 4);
+            }
+
+            // Case custom long delimiter
+            if (isCustom && numbers.Contains('[') && numbers.Contains(']'))
+            {
+                var lines = numbers.Split('\n');
+                var delimiterWS = lines[0].Split('[');
+                var delimiter = delimiterWS[1].Split(']');
+
+                delimiters.Add(delimiter[0]);
+
+                numbers = numbers.Remove(0, 6 + delimiter.Length);
             }
 
             // Case single number
@@ -39,7 +51,7 @@ namespace StringCalculator
             }
 
             // Case multiple number
-            var nums = numbers.Split(delimiters.ToArray());
+            var nums = numbers.Split(delimiters.ToArray(), StringSplitOptions.None);
             int num = 0;
 
             List<int> negativNums = new List<int>();
