@@ -38,6 +38,7 @@ namespace StringCalculator_NUnitTests
         public void Given_String_Contains_Invalid_Characters_Should_Return_Zero()
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add("asd"), 0);
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("asd,fgh"), 0);
         }
     }
 }
