@@ -14,14 +14,25 @@ namespace StringCalculator
             if (string.IsNullOrWhiteSpace(numbers))
                 return 0;
 
+            List<char> delimiters = new List<char>() { '\n', ',' };
+
+            // Case custom
+            bool isCustom = numbers.Contains("//");
+            if (isCustom)
+            {
+                var lines = numbers.Split('\n');
+                int lastIndex = lines[0].LastIndexOf("/");
+                delimiters.Add(lines[0][lastIndex + 1]);
+                numbers = numbers.Remove(0, 4);
+            }
+
             // Case single number
             bool isNumber = Int32.TryParse(numbers, out int number);
             if (isNumber)
                 return number;
 
             // Case multiple number
-            var delimiters = new[] { '\n', ',' };
-            var nums = numbers.Split(delimiters);
+            var nums = numbers.Split(delimiters.ToArray());
             int num = 0;
             for (int i = 0; i < nums.Length; i++)
             {
