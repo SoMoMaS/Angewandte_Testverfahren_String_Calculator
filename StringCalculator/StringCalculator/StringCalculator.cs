@@ -22,6 +22,7 @@ namespace StringCalculator
             {
                 var lines = numbers.Split('\n');
                 int lastIndex = lines[0].LastIndexOf("/");
+                delimiters.Clear();
                 delimiters.Add(lines[0][lastIndex + 1].ToString());
                 numbers = numbers.Remove(0, 4);
             }
@@ -30,10 +31,11 @@ namespace StringCalculator
             if (isCustom && numbers.Contains('[') && numbers.Contains(']'))
             {
                 var lines = numbers.Split('\n');
-                var dels = lines[0].Remove(0, 2);
-                var delimeters = dels.Split(new[] { '[', ']' });
-                List<string> mixed = new List<string>(delimeters);
+                var slashRemoved = lines[0].Remove(0, 2);
+                var dels = slashRemoved.Split(new[] { '[', ']' });
+                List<string> mixed = new List<string>(dels);
                 var clean = mixed.FindAll(s => s != string.Empty);
+                delimiters.Clear();
                 clean.ForEach(s => delimiters.Add(s));
 
                 numbers = lines[1];
@@ -82,7 +84,6 @@ namespace StringCalculator
                 negativNums.ForEach(s => stringNums = stringNums + " " + s.ToString());
                 throw new InvalidOperationException($"Negatives not allowed: {stringNums}");
             }
-                
 
             return num;
         }
