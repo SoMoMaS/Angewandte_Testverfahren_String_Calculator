@@ -11,7 +11,7 @@ namespace StringCalculator
     {
         internal static int Add(string numbers)
         {
-            throw new NotImplementedException();
+            return 0;
         }
     }
 }
