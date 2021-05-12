@@ -59,5 +59,11 @@ namespace StringCalculator_NUnitTests
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add("1\n2,3\n4,5\n6"), 21);
         }
+
+        [Test]
+        public void Given_String_Defines_Custom_Delimiters_Should_Be_Allowed_And_Sums_The_Numbers_Correctly()
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("//;\n1;2;3;4;5;6"), 21);
+        }
     }
 }
