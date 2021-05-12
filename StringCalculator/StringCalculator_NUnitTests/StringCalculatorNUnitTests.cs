@@ -33,5 +33,11 @@ namespace StringCalculator_NUnitTests
             Assert.AreEqual(StringCalculator.StringCalculator.Add("20,69"), 89);
             Assert.AreEqual(StringCalculator.StringCalculator.Add("19,10000"), 10019);
         }
+
+        [Test]
+        public void Given_String_Contains_Invalid_Characters_Should_Return_Zero()
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("asd"), 15);
+        }
     }
 }
