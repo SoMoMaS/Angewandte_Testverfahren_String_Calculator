@@ -20,7 +20,8 @@ namespace StringCalculator
                 return number;
 
             // Case multiple number
-            var nums = numbers.Split(',');
+            var delimiters = new[] { '\n', ',' };
+            var nums = numbers.Split(delimiters);
             int num = 0;
             for (int i = 0; i < nums.Length; i++)
             {
