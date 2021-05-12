@@ -18,5 +18,11 @@ namespace StringCalculator_NUnitTests
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(""), 0);
         }
+
+        [Test]
+        public void Given_String_Contains_A_Number_Should_Return_The_Given_Number()
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("1"), 1);
+        }
     }
 }
