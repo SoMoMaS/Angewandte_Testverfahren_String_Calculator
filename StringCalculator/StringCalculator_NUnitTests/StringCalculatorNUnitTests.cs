@@ -23,6 +23,7 @@ namespace StringCalculator_NUnitTests
         public void Given_String_Contains_A_Number_Should_Return_The_Given_Number()
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add("1"), 1);
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("2"), 2);
         }
     }
 }
