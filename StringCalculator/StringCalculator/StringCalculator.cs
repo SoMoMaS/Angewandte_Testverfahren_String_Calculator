@@ -29,13 +29,18 @@ namespace StringCalculator
             // Case custom long delimiter
             if (isCustom && numbers.Contains('[') && numbers.Contains(']'))
             {
+                //var lines = numbers.Split('\n');
+                //var delimiterWS = lines[0].Split('[');
+                //var delimiter = delimiterWS[1].Split(']');
+
                 var lines = numbers.Split('\n');
-                var delimiterWS = lines[0].Split('[');
-                var delimiter = delimiterWS[1].Split(']');
+                var dels = lines[0].Remove(0, 2);
+                var delimeters = dels.Split(new[] { '[', ']' });
+                List<string> mixed = new List<string>(delimeters);
+                var clean = mixed.FindAll(s => s != string.Empty);
+                clean.ForEach(s => delimiters.Add(s));
 
-                delimiters.Add(delimiter[0]);
-
-                numbers = numbers.Remove(0, 6 + delimiter[0].Length - 1);
+                numbers = lines[1];
             }
 
             // Case single number
