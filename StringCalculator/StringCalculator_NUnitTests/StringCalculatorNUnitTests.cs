@@ -47,5 +47,11 @@ namespace StringCalculator_NUnitTests
             Assert.AreEqual(StringCalculator.StringCalculator.Add("1,2,3,4,5,6"), 21);
             Assert.AreEqual(StringCalculator.StringCalculator.Add("1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"), 19);
         }
+
+        [Test]
+        public void Given_String_Contains_New_Line_As_Seperator()
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("1\n2\n3\n4\n5\n6"), 21);
+        }
     }
 }
