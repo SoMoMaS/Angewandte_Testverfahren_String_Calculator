@@ -34,6 +34,8 @@ namespace StringCalculator
             // Case multiple number
             var nums = numbers.Split(delimiters.ToArray());
             int num = 0;
+
+            List<int> negativNums = new List<int>();
             for (int i = 0; i < nums.Length; i++)
             {
                 bool isNum = Int32.TryParse(nums[i], out int convertedNum);
@@ -44,8 +46,20 @@ namespace StringCalculator
                     break;
                 }
 
+                // Negative case
+                if (convertedNum < 0)
+                    negativNums.Add(convertedNum);
+
                 num = num + convertedNum;
             }
+
+            if (negativNums.Count > 0)
+            {
+                string stringNums = string.Empty;
+                negativNums.ForEach(s => stringNums = stringNums + " " + s.ToString());
+                throw new InvalidOperationException($"Negatives not allowed: {stringNums}");
+            }
+                
 
             return num;
         }

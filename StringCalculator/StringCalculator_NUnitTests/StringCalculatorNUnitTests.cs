@@ -70,7 +70,7 @@ namespace StringCalculator_NUnitTests
         public void Given_String_Contains_Negative_Numbers_Should_Throw_An_Exception_With_A_List_Of_The_Negativ_Numbers()
         {
             TestDelegate test = () => StringCalculator.StringCalculator.Add("//;\n-1;2;3;-4;5\n-6");
-            Assert.Throws<InvalidOperationException>(test, "negatives not allowed");
+            Assert.Throws<InvalidOperationException>(test, "Negatives not allowed: -1 -4 -6");
         }
     }
 }
