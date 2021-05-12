@@ -40,5 +40,12 @@ namespace StringCalculator_NUnitTests
             Assert.AreEqual(StringCalculator.StringCalculator.Add("asd"), 0);
             Assert.AreEqual(StringCalculator.StringCalculator.Add("asd,fgh"), 0);
         }
+
+        [Test]
+        public void Given_String_Contains_More_Than_Two_Numbers_Should_Return_The_Sum_Of_The_Numbers()
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("1,2,3,4,5,6"), 21);
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"), 19);
+        }
     }
 }
