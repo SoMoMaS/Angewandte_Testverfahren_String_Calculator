@@ -53,5 +53,11 @@ namespace StringCalculator_NUnitTests
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add("1\n2\n3\n4\n5\n6"), 21);
         }
+
+        [Test]
+        public void Given_String_Contains_New_Line_And_Comma_As_Seperator()
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("1\n2,3\n4,5\n6"), 21);
+        }
     }
 }
