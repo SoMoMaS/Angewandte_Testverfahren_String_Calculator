@@ -91,6 +91,7 @@ namespace StringCalculator_NUnitTests
         public void Given_String_Contains_Multiple_Custom_Longer_Delimiter_Should_Be_Interpreted_As_A_Seperator()
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add("//[***][÷ß]\n1***200÷ß7"), 208);
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("//[***][÷ß][@@@][||][~~~][^^ˇ]\n1***200÷ß7@@@8||1~~~9^^ˇ14"), 240);
         }
     }
 }
