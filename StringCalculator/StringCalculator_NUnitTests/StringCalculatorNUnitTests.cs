@@ -85,5 +85,12 @@ namespace StringCalculator_NUnitTests
             Assert.AreEqual(StringCalculator.StringCalculator.Add("//[***]\n1***2000"), 1);
             Assert.AreEqual(StringCalculator.StringCalculator.Add("//[$ŁłŁ$]\n1$ŁłŁ$20$ŁłŁ$15"), 36);
         }
+
+
+        [Test]
+        public void Given_String_Contains_Multiple_Custom_Longer_Delimiter_Should_Be_Interpreted_As_A_Seperator()
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("//[***][÷ß]\n1***200÷ß7"), 208);
+        }
     }
 }
