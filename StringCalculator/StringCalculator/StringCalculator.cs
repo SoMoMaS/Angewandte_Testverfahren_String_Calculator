@@ -11,7 +11,10 @@ namespace StringCalculator
     {
         internal static int Add(string numbers)
         {
-            return 0;
+            if (string.IsNullOrWhiteSpace(numbers))
+                return 0;
+            else
+                return 1;
         }
     }
 }
