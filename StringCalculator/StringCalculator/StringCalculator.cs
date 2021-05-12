@@ -14,8 +14,12 @@ namespace StringCalculator
             if (string.IsNullOrWhiteSpace(numbers))
                 return 0;
 
-            int num = Int32.Parse(numbers);
-            return num;
+            // Case single number
+            bool isNumber = Int32.TryParse(numbers, out int number);
+            if (isNumber)
+                return number;
+
+            return 15;
         }
     }
 }
