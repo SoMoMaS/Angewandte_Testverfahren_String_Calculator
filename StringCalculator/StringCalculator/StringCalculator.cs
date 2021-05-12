@@ -19,7 +19,16 @@ namespace StringCalculator
             if (isNumber)
                 return number;
 
-            return 15;
+            // Case multiple number
+            var nums = numbers.Split(',');
+            int num = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int convertedNum = Int32.Parse(nums[i]);
+                num = num + convertedNum;
+            }
+
+            return num;
         }
     }
 }
