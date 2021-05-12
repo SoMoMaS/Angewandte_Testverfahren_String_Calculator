@@ -35,7 +35,7 @@ namespace StringCalculator
 
                 delimiters.Add(delimiter[0]);
 
-                numbers = numbers.Remove(0, 6 + delimiter.Length);
+                numbers = numbers.Remove(0, 6 + delimiter[0].Length - 1);
             }
 
             // Case single number

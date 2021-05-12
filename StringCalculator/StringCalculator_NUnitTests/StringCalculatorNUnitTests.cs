@@ -83,6 +83,7 @@ namespace StringCalculator_NUnitTests
         public void Given_String_Contains_Custom_Longer_Delimiter_Should_Be_Interpreted_Correctly()
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add("//[***]\n1***2000"), 1);
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("//[$ŁłŁ$]\n1$ŁłŁ$20$ŁłŁ$15"), 36);
         }
     }
 }
