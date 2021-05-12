@@ -29,7 +29,14 @@ namespace StringCalculator
             // Case single number
             bool isNumber = Int32.TryParse(numbers, out int number);
             if (isNumber)
-                return number;
+            {
+                if (number > 1000)
+                {
+                    return 0;
+                }
+                else
+                    return number;
+            }
 
             // Case multiple number
             var nums = numbers.Split(delimiters.ToArray());
@@ -49,6 +56,9 @@ namespace StringCalculator
                 // Negative case
                 if (convertedNum < 0)
                     negativNums.Add(convertedNum);
+
+                if (convertedNum > 1000)
+                    convertedNum = 0;
 
                 num = num + convertedNum;
             }

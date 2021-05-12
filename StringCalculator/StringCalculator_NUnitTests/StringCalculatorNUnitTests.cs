@@ -31,7 +31,7 @@ namespace StringCalculator_NUnitTests
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add("5,10"), 15);
             Assert.AreEqual(StringCalculator.StringCalculator.Add("20,69"), 89);
-            Assert.AreEqual(StringCalculator.StringCalculator.Add("19,10000"), 10019);
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("19,100"), 10019);
         }
 
         [Test]
