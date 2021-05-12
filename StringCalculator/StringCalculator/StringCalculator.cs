@@ -11,12 +11,15 @@ namespace StringCalculator
     {
         internal static int Add(string numbers)
         {
+            // If the string is empty we just return 0 hence it was not defined how the application should handle this case.
             if (string.IsNullOrWhiteSpace(numbers))
                 return 0;
 
+            // Defining the default seperators which could be changed by the custom delimiter syntax.
             List<string> delimiters = new List<string>() { "\n", "," };
 
-            // Case custom single delimiter
+            // Case custom single delimiter without square brackets.
+            // Sadly needs to be implemented separately hence it is a special case
             bool isCustom = numbers.Contains("//");
             if (isCustom && !numbers.Contains('[') && !numbers.Contains(']'))
             {
@@ -28,30 +31,37 @@ namespace StringCalculator
             }
 
             // Case custom long delimiter
+            // This case the input has to contain square brackets
             if (isCustom && numbers.Contains('[') && numbers.Contains(']'))
             {
                 var lines = numbers.Split('\n');
                 var slashRemoved = lines[0].Remove(0, 2);
+
+                // Splitting by the opening and closing brackets.
                 var dels = slashRemoved.Split(new[] { '[', ']' });
                 List<string> mixed = new List<string>(dels);
+
+                // The results contains whitespaces which has to be removed
                 var clean = mixed.FindAll(s => s != string.Empty);
                 delimiters.Clear();
+
+                // Then we add all of the custom defined delimiters to our collection.
                 clean.ForEach(s => delimiters.Add(s));
 
                 numbers = lines[1];
             }
 
             // Case single number
-            bool isNumber = Int32.TryParse(numbers, out int number);
-            if (isNumber)
-            {
-                if (number > 1000)
-                {
-                    return 0;
-                }
-                else
-                    return number;
-            }
+            //bool isNumber = Int32.TryParse(numbers, out int number);
+            //if (isNumber)
+            //{
+            //    if (number > 1000)
+            //    {
+            //        return 0;
+            //    }
+            //    else
+            //        return number;
+            //}
 
             // Case multiple number
             var nums = numbers.Split(delimiters.ToArray(), StringSplitOptions.None);
@@ -69,6 +79,7 @@ namespace StringCalculator
                 }
 
                 // Negative case
+                // We need to iterate throug anyway because the numbers are not converted yet into an integer.
                 if (convertedNum < 0)
                     negativNums.Add(convertedNum);
 
