@@ -72,5 +72,11 @@ namespace StringCalculator_NUnitTests
             TestDelegate test = () => StringCalculator.StringCalculator.Add("//;\n-1;2;3;-4;5\n-6");
             Assert.Throws<InvalidOperationException>(test, "Negatives not allowed: -1 -4 -6");
         }
+
+        [Test]
+        public void Given_String_Contains_A_Value_Bigger_Than_1000_This_Number_Should_Be_Ignored()
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add("//;\n1;2000"), 1);
+        }
     }
 }
