@@ -24,7 +24,14 @@ namespace StringCalculator
             int num = 0;
             for (int i = 0; i < nums.Length; i++)
             {
-                int convertedNum = Int32.Parse(nums[i]);
+                bool isNum = Int32.TryParse(nums[i], out int convertedNum);
+
+                if (!isNum)
+                {
+                    num = 0;
+                    break;
+                }
+
                 num = num + convertedNum;
             }
 
